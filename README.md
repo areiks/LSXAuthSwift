@@ -85,5 +85,9 @@ It is possible to check if token is already set by using **isAccessTokenAvailabl
 ## Contribution
 
 Let me know for which API's are you using LSXAuthSwift and what did you need to change in the code to make it work (if anything). I may add support for additional API's later on. 
+
+## Credits
+
+Icon comes from https://icons8.com. Some parts of the code were found by me all over the Internet and modified by me during my trials with Instapaper Api connection. If any of the original authors have something against sharing it here - let me know. If you would like to be included in credits section also let me know. 
 	
 
