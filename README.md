@@ -76,11 +76,29 @@ Finally you can make signed requests to Instapaper API. To generate header witho
 		"Accept":"application/json"
 	]
                     
-	Alamofire.request(verifyCredentialsUrl, method: .post, parameters: [:], encoding: URLEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in
-
+	Alamofire.request(verifyCredentialsUrl, method: .post, parameters: [:], encoding: URLEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in 
+	
 	})
 	
-It is possible to check if token is already set by using **isAccessTokenAvailable()**
+It is also possible to generate header with parameters (parameters need also to be encrypted). To achieve this use **generateAuthorizationHeader(url: String, params: [String:String]) -> String**:
+	
+	let parameters = [
+		"limit":String(500)
+	]
+        
+	let authorizationHeader = XAuthSwift.generateAuthorizationHeader(url: InstapaperEndpoint.ListBookmarks.path, params: parameters)
+        
+	let headers = [
+		"Authorization":authorizationHeader,
+		"Content-Type":"application/x-www-form-urlencoded; charset=utf-8",
+		"Accept":"application/json"
+	]
+        
+	Alamofire.request(InstapaperEndpoint.ListBookmarks.path, method: .post, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in 
+	
+	})
+	
+To check if token is already set use **isAccessTokenAvailable()**
 	
 ## Contribution
 
